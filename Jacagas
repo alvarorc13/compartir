@@ -1,0 +1,60 @@
+MENU='''
+        1. Llenar tanque (diésel o gasolina)
+        2. Asignar coche a surtidor y repostar
+        3. Ver puntos de cliente
+        4. Comprobar histórico de ventas.
+        5. Consultar estado de surtidores
+        6. Asignar precio a la gasolina
+        7. Asignar precio al diésel
+        8. Cerrar el programa y salir.
+'''
+
+print(MENU)
+opcion=int(input("Elija una opcion: "))
+
+surtidor1=0
+surtidor2=0
+surtidor3=0
+surtidor4=0
+
+listado_coches=[['1234BCD', 'gasolina'], ['5678FGH', 'diésel']]
+
+while opcion!=8:
+
+    if opcion==1:
+        surtidor=int(input("Seleccione que surtidor desea llenar(1-4): "))
+        while surtidor<=0 and surtidor>4:
+            surtidor=int(input("Introduzca un surtidor válido(1-4): "))
+
+        if surtidor==1:
+            repostar_surtidor=float(input("Introduzca la cantidad en litros de gasolina a suministrar: "))
+            while repostar_surtidor<0 or repostar_surtidor>5000-surtidor1:
+                repostar_surtidor=float(input(f"Introduzca una cantidad válida. Espacio en tanque {5000-surtidor1} litros: "))
+            surtidor1+=repostar_surtidor
+
+        elif surtidor==2:
+            repostar_surtidor=float(input("Introduzca la cantidad en litros de gasolina a suministrar: "))
+            while repostar_surtidor<0 or repostar_surtidor>5000-surtidor2:
+                repostar_surtidor=float(input(f"Introduzca una cantidad válida. Espacio en tanque {5000-surtidor2} litros: "))
+            surtidor2+=repostar_surtidor
+
+        elif surtidor==3:
+            repostar_surtidor=float(input("Introduzca la cantidad en litros de diésel a suministrar: "))
+            while repostar_surtidor<0 or repostar_surtidor>5000-surtidor3:
+                repostar_surtidor=float(input(f"Introduzca una cantidad válida. Espacio en tanque {5000-surtidor3} litros: "))
+            surtidor3+=repostar_surtidor
+
+        elif surtidor==4:
+            repostar_surtidor=float(input("Introduzca la cantidad en litros de diésel a suministrar: "))
+            while repostar_surtidor<0 or repostar_surtidor>5000-surtidor4:
+                repostar_surtidor=float(input(f"Introduzca una cantidad válida. Espacio en tanque {5000-surtidor4} litros: "))
+            surtidor4+=repostar_surtidor
+
+    elif opcion==2:
+        matricula=str(input("Introduzca los numeros de su matrícula: "))
+        while matricula[:4].isdigit()==False or matricula[4:7].isalpha()==False:
+            matricula=str(input("Introduzca una matrícula válida: "))
+        combustible=str(input("Introduzca su tipo de combustible: "))
+        while combustible!="gasolina" or combustible!="diesel" or combustible!="diésel":
+            combustible=str(input("Introduzca un tipo de combustible válido: "))
+        listado_coches.append([matricula, combustible])
